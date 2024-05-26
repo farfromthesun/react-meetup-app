@@ -1,0 +1,15 @@
+.pageSection {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.6s ease 0.2s;
+}
+.pageSectionHidden {
+  transform: translateX(-0.5rem);
+  opacity: 0;
+  visibility: hidden;
+}
+
+h1 {
+  text-align: center;
+}
