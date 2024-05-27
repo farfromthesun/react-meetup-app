@@ -1,15 +1,14 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Card from "../ui/Card";
 import classes from "./MeetupsItem.module.css";
-import FavouritesContext from "../../store/favourites-context";
 import { useDeleteMeetup } from "../../hooks/useDeleteMeetup";
 import { Link, useLocation } from "react-router-dom";
 import AlertX from "../ui/AlertX";
 import useToast from "../../hooks/useToast";
+import useFavourites from "../../hooks/useFavourites";
 
 function MeetupsItem({ id, title, address, description, onDeletedMeetup }) {
-  const { addFavourite, removeFavourite, isItemFavourite } =
-    useContext(FavouritesContext);
+  const { addFavourite, removeFavourite, isItemFavourite } = useFavourites();
   const [deleteMeetup, error, deleteIsLoading] = useDeleteMeetup();
   const location = useLocation();
   const isFavouriteAlready = isItemFavourite(id);
@@ -19,10 +18,10 @@ function MeetupsItem({ id, title, address, description, onDeletedMeetup }) {
   function favouriteToggleHandler() {
     if (isFavouriteAlready) {
       removeFavourite(id);
-      toast({ message: "Meetup removed to favourites." });
+      toast({ message: "Meetup removed from favourites." });
     } else {
       addFavourite(id);
-      toast({ message: "Meetup added from favourites." });
+      toast({ message: "Meetup added to favourites." });
     }
   }
 

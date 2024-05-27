@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
-import { useContext } from "react";
-import FavouritesContext from "../../store/favourites-context";
+import useFavourites from "../../hooks/useFavourites";
 
 function MainNavigation() {
-  const { totalFavourites } = useContext(FavouritesContext);
+  const { totalFavourites } = useFavourites();
   const navlinksArray = [
     {
       slug: "/",

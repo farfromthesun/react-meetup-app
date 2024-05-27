@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import FavouritesContext from "../store/favourites-context";
+import { useEffect, useState } from "react";
 import FIREBASE_URL from "../config";
+import useFavourites from "./useFavourites";
 
 export function useGetFavouritedMeetups() {
   const [favouritedMeetups, setFavouritedMeetups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { favourites } = useContext(FavouritesContext);
+  const { favourites } = useFavourites();
 
   useEffect(() => {
     setIsLoading(true);
